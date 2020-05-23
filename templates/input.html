@@ -1,13 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Input</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Articles</h1>
+      <hr>
+
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.article_id.label }}<br>
-            {{ form.article_id(size=64) }}<br>
+            {{ form.article_id(size=50) }}
         </p>
         <p>{{ form.submit() }}</p>
+	<!-- recommendations -->
+	<h4>Accessing recommendations</h4>
+	<!-- <p>Recommended paper_ids : {{ recommendations }}</p> -->
+	<hr>
+	<strong class="d-block mb-3">Recommended paper_ids :</strong>
+	<hr>
+	{% if recommendations != None %}
+        <ul>
+          {% for reco in recommendations %}
+          <li>{{ reco }}</li>
+          {% endfor %}
+        </ul>
+	{% else %}
+	<p>No recommendations found</p>
+	{% endif %}
+
     </form>
+
+		
+    </div>
+  </div>
+</div>
 {% endblock %}
