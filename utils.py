@@ -27,7 +27,8 @@ def load_model(config: Configuration):
     if not os.path.exists(config.data):
         download_data(config)
 
-    model = pd.read_csv(config.data, sep=";")
+    #model = pd.read_csv(config.data, sep=";")
+    model = pd.read_csv(config.data)
     model = dict(zip(model['id'], model['recommendations']))
     model = {key: value.split(',') for key, value in model.items()}
     return model
