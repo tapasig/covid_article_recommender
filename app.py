@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
-from utils import load_model
+from utils import load_model, load_catalog
 from configuration import Configuration
 import json
 from recommender.forms import InputForm
@@ -10,6 +10,7 @@ app.config["SECRET_KEY"] = "top secret!"
 
 config = Configuration()
 model = load_model(config)
+model = load_catalog(config)
 
 
 @app.route("/", methods=["GET"])
@@ -30,7 +31,6 @@ def index():
 
 
 def input():
-    global model
     article = None
     recommendations = None
     titles = {}
@@ -54,11 +54,8 @@ def input():
     	recommendations = model.get(article) #json.dump(model.get(article))
 
 
-    #read the title from csv file
-    catalog = pd.read_csv('./data1/paper_catalog.csv')
-    print("read catalog ", type(catalog))
-#    print(type(article))
-
+    # TODO load_Catalog should return a dictionary instead of a dataframe
+    # TODO this loop is not efficient, by having the dictionary we will just look in the dict and thats better
     for reco in recommendations:
         for index,row in catalog.itertuples(index=False):
            if (reco == index):
