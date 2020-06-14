@@ -57,5 +57,5 @@ def load_catalog(config: Configuration):
     if not os.path.exists(config.catalog):
         download_catalog(config)
 
-    catalog = pd.read_csv('./data/paper_catalog.csv')
+    catalog = pd.read_csv(config.catalog)
     return catalog
