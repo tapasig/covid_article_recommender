@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
+from typing import Dict, Any
 from utils import load_model, load_catalog
 from configuration import Configuration
 import json
@@ -10,7 +11,7 @@ app.config["SECRET_KEY"] = "top secret!"
 
 config = Configuration()
 model = load_model(config)
-model = load_catalog(config)
+catalog = load_catalog(config)
 
 
 @app.route("/", methods=["GET"])
@@ -28,40 +29,38 @@ def index():
 #    return render_template('index.html', title='Home', form=form, article=article) 
 
 @app.route('/input', methods=["GET","POST"])
-
-
 def input():
     article = None
     recommendations = None
-    titles = {}
+    titles = {}  # type: Dict[id, title]
     catalog = None
 
     form = InputForm()
     '''
     if form.validate_on_submit():
-    	#to render the message update the base template
+        #to render the message update the base template
         flash('Submit the paper_id{} of an article'.format(form.article_id.data))
         return redirect(url_for('input'))
     else:
         recommendations = model.get(article)
     '''
     if form.validate():
-    	article = request.form.get("article_id")
+        article = request.form.get("article_id")
 
     #model.get(article) returns the recommendations      
     if model.get(article):
-        #query = article
-    	recommendations = model.get(article) #json.dump(model.get(article))
-
-
-    # TODO load_Catalog should return a dictionary instead of a dataframe
-    # TODO this loop is not efficient, by having the dictionary we will just look in the dict and thats better
-    for reco in recommendations:
-        for index,row in catalog.itertuples(index=False):
-           if (reco == index):
-	        #print(article)
-                titles[reco] = row
-
+        recommendations = model.get(article) #json.dump(model.get(article))
+        print("article=", article,  "recommendations = ", recommendations)
+        # TODO load_Catalog should return a dictionary instead of a dataframe
+        # TODO this loop is not efficient, by having the dictionary we will just look in the dict and thats better
+        if (recommendations != None):
+            print("recos are not empty")
+            for reco in recommendations:
+                title = catalog.get(reco,"")
+                titles[reco] = title
+        else:
+            print("recos is empty")
+           
 
     print("article=", article, "title=", len(titles), "recommendations = ", len(recommendations))
     
