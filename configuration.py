@@ -44,3 +44,15 @@ class Configuration:
             return config.get("path", "")
         else:
             return os.environ["DATA"]
+
+    @property
+    def catalog(self):
+        """
+        config parameters for the catalog
+        """
+        if os.path.exists(self.CONFIG_FILE):
+            config = self._parser["catalog"]
+            return config.get("path", "")
+        else:
+            return os.environ["CATALOG"]
+
