@@ -58,4 +58,5 @@ def load_catalog(config: Configuration):
         download_catalog(config)
 
     catalog = pd.read_csv(config.catalog)
+    catalog = {row[0] : row[1] for _, row in catalog.iterrows()}
     return catalog
