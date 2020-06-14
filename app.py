@@ -67,7 +67,7 @@ def input():
         "title=",
         len(titles),
         "recommendations = ",
-        len(recommendations),
+        recommendations
     )
 
     return render_template(
