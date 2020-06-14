@@ -16,15 +16,20 @@
         </p>
         <p>{{ form.submit() }}</p>
 	<!-- recommendations -->
-	<h4>Accessing recommendations</h4>
-	<!-- <p>Recommended paper_ids : {{ recommendations }}</p> -->
+	<h4>Accessing recommendations for article:</h4>
+	<h3> {{ article }} </h3>
+	<!-- <p>Recommended papers : {{ recommendations }}</p> -->
 	<hr>
-	<strong class="d-block mb-3">Recommended paper_ids :</strong>
+	<strong class="d-block mb-3">Recommended papers :</strong>
 	<hr>
 	{% if recommendations != None %}
         <ul>
           {% for reco in recommendations %}
-          <li>{{ reco }}</li>
+          <li>{{ titles[reco] }}</li>
+          <!-- to get the URL of the articles --> 
+          <div class="card-body">
+              <a target="_blank" rel="noopener noreferrer" href=https://cord-19.apps.allenai.org/{{ titles[reco] }} class="btn btn-primary btn-sm"> Find details on Allen Institute for AI </a>
+          </div>
           {% endfor %}
         </ul>
 	{% else %}

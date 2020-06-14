@@ -11,4 +11,4 @@ class InputForm(FlaskForm):
     article_id = TextField(
         "Enter an article id, try with '000b7d1517ceebb34e1e3e817695b6de03e2fa78' ", validators=[DataRequired()]
     )
-    submit = SubmitField("Find related articles")
+    submit = SubmitField("Find Related Articles")
