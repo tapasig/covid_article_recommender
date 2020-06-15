@@ -18,8 +18,7 @@
 	<!-- recommendations -->
 	<h4>Accessing recommendations for article:</h4>
         {% if article%}
-	<h3> {{ article  }} </h3>
-        <h3> {{ titles[article]  }} </h3>
+        <h4> {{ titles[article]  }} </h4>
         {% endif %}
 	<!-- <p>Recommended papers : {{ recommendations }}</p> -->
 	<hr>
@@ -31,7 +30,7 @@
           <li>{{ titles[reco] }}</li>
           <!-- to get the URL of the articles --> 
           <div class="card-body">
-              <a target="_blank" rel="noopener noreferrer" href=https://cord-19.apps.allenai.org/{{ reco }} class="btn btn-primary btn-sm"> Find details on Allen Institute for AI </a>
+              <a target="_blank" rel="noopener noreferrer" href=https://www.semanticscholar.org/paper/{{ reco }} class="btn btn-primary btn-sm"> Find details on SemanticScholar. </a>
           </div>
           {% endfor %}
         </ul>
