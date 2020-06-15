@@ -48,6 +48,7 @@ def input():
     """
     if form.validate():
         article = request.form.get("article_id")
+        titles[article] = catalog.get(article, "")
 
     # model.get(article) returns the recommendations
     if model.get(article):

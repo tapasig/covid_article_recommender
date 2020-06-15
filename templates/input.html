@@ -17,7 +17,10 @@
         <p>{{ form.submit() }}</p>
 	<!-- recommendations -->
 	<h4>Accessing recommendations for article:</h4>
-	<h3> {{ article }} </h3>
+        {% if article%}
+	<h3> {{ article  }} </h3>
+        <h3> {{ titles[article]  }} </h3>
+        {% endif %}
 	<!-- <p>Recommended papers : {{ recommendations }}</p> -->
 	<hr>
 	<strong class="d-block mb-3">Recommended papers :</strong>
@@ -28,7 +31,7 @@
           <li>{{ titles[reco] }}</li>
           <!-- to get the URL of the articles --> 
           <div class="card-body">
-              <a target="_blank" rel="noopener noreferrer" href=https://cord-19.apps.allenai.org/{{ titles[reco] }} class="btn btn-primary btn-sm"> Find details on Allen Institute for AI </a>
+              <a target="_blank" rel="noopener noreferrer" href=https://cord-19.apps.allenai.org/{{ reco }} class="btn btn-primary btn-sm"> Find details on Allen Institute for AI </a>
           </div>
           {% endfor %}
         </ul>
