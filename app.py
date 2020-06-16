@@ -14,6 +14,7 @@ catalog = load_catalog(config)
 
 
 @app.route("/", methods=["GET"])
+@app.route("/index", methods=["GET"])
 def index():
     return render_template("index.html", title="Home")
 

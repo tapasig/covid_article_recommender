@@ -5,8 +5,8 @@
     <body>
         <div>
 	   Recommender: 
-	   <a href="/">Home</a>
-           <a href="/input">Input</a>
+	   <a href={{ url_for('index') }}>Home</a>
+           <a href={{ url_for('input') }}>Input</a>
 	</div> 
 	<hr>
         {% block content %}{% endblock %}
