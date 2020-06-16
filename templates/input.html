@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Articles</h1>
+      <h1 style="color: blue">Article Informations</h1>
       <hr>
 
     <form action="" method="post" novalidate>
@@ -16,12 +16,12 @@
         </p>
         <p>{{ form.submit() }}</p>
 	<!-- recommendations -->
-	<h4>Accessing recommendations for article:</h4>
+	<h4 style="color: green" >Accessing recommendations for article:</h4>
         {% if article%}
         <h4> {{ titles[article]  }} </h4>
-        <!-- to get the URL of the article -->
+        <!-- to get the URL of the QUERY article -->
         <div class="card-body">
-            <a target="_blank" rel="noopener noreferrer" href=https://www.semanticscholar.org/paper/{{ article }} class="btn btn-primary btn-sm"> Find details on SemanticScholar </a>
+            <a target="_blank" rel="noopener noreferrer" href=https://www.semanticscholar.org/paper/{{ article }} class="btn btn-primary btn-sm"> Find details of the query on SemanticScholar </a>
         </div> 
         {% endif %}
 	<!-- <p>Recommended papers : {{ recommendations }}</p> -->
@@ -32,14 +32,14 @@
         <ul>
           {% for reco in recommendations %}
           <li>{{ titles[reco] }}</li>
-          <!-- to get the URL of the articles --> 
+          <!-- to get the URL of the Recommended articles --> 
           <div class="card-body">
-              <a target="_blank" rel="noopener noreferrer" href=https://www.semanticscholar.org/paper/{{ reco }} class="btn btn-primary btn-sm"> Find details on SemanticScholar </a>
+              <a target="_blank" rel="noopener noreferrer" href=https://www.semanticscholar.org/paper/{{ reco }} class="btn btn-primary btn-sm"> Find details of this article on SemanticScholar </a>
           </div>
           {% endfor %}
         </ul>
 	{% else %}
-	<p>No recommendations found</p>
+	<p style="color: red" >No recommendations found</p>
 	{% endif %}
 
     </form>
