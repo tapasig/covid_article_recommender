@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1 style="color: blue">Article Informations</h1>
+      <h1 style="background-color: powderblue">Article Informations</h1>
       <hr>
 
     <form action="" method="post" novalidate>
@@ -16,7 +16,7 @@
         </p>
         <p>{{ form.submit() }}</p>
 	<!-- recommendations -->
-	<h4 style="color: green" >Accessing recommendations for article:</h4>
+	<h3 style="background-color: lightgrey" >Accessing recommendations for article:</h3>
         {% if article%}
         <h4> {{ titles[article]  }} </h4>
         <!-- to get the URL of the QUERY article -->
@@ -26,7 +26,7 @@
         {% endif %}
 	<!-- <p>Recommended papers : {{ recommendations }}</p> -->
 	<hr>
-	<strong class="d-block mb-3">Recommended papers :</strong>
+	<strong class="d-block mb-3" style="background-color: tomato">Recommended papers :</strong>
 	<hr>
 	{% if recommendations != None %}
         <ul>
